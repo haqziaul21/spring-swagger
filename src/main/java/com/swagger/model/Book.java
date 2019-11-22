@@ -2,6 +2,7 @@ package com.swagger.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,9 +29,10 @@ public class Book {
     
     @ApiModelProperty(notes = "Book creation time" ,readOnly = true)
 	@CreationTimestamp
+	@Column(nullable = false,updatable = false)
 	private Date createdAt;
 
-    @ApiModelProperty(notes = "Book updation time")
+    @ApiModelProperty(notes = "Book updation time",readOnly = true)
 	@UpdateTimestamp
 	private Date updatedAt;
 
@@ -53,7 +55,11 @@ public class Book {
 	public Integer getBookId() {
 		return bookId;
 	}
-
+	
+	public void setBookId(Integer bookId) {
+		this.bookId = bookId;
+	}
+	
 	public Date getCreatedAt() {
 		return createdAt;
 	}

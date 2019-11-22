@@ -70,6 +70,8 @@ public class BookController {
 		if (!bookService.findById(bookId).isPresent()) {
 			log.error("bookId {} not existed", bookId);
 			return ResponseEntity.notFound().build();
+		}else {
+			book.setBookId(bookId);
 		}
 
 		return ResponseEntity.ok(bookService.save(book));
